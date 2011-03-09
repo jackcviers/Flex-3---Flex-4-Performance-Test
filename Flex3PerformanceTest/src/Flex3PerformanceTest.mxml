@@ -1,0 +1,419 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml"
+				minWidth = "955"
+				minHeight = "600"
+				layout = "vertical"
+				horizontalScrollPolicy = "auto"
+				verticalScrollPolicy = "auto"
+				width = "955"
+				height = "600"
+				initialize = "application1_initializeHandler(event)"
+				preinitialize = "application1_preinitializeHandler(event)"
+				creationComplete = "application1_creationCompleteHandler(event)"
+				addedToStage = "application1_addedToStageHandler(event)"
+				applicationComplete = "application1_applicationCompleteHandler(event)" viewSourceURL="srcview/index.html">
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+
+			public static const ADDED_TO_STAGE_TIME : String
+				= 'addedToStageTime';
+
+			public static const APPLICATION_COMPLETE_TIME : String
+				= 'applicationCompleteTime';
+
+			public static const CREATION_COMPLETE_TIME : String
+				= 'creationCompleteTime';
+
+			public static const INITIIALIZE_TIME : String
+				= 'initializeTime';
+
+			public static const PREINITIALIZE_TIME : String
+				= 'preinitializeTime';
+
+			public static const TOTAL_TIME : String                = "totalTime";
+
+			public var componentTimes : Object
+				= new Object ();
+
+			public var startTime : Date
+				= new Date ();
+
+			protected function application1_addedToStageHandler ( event : Event ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ ADDED_TO_STAGE_TIME ]
+					= new Date ();
+			}
+
+			protected function application1_applicationCompleteHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ APPLICATION_COMPLETE_TIME ]
+					= new Date ();
+				measureTimes ();
+			}
+
+			protected function application1_creationCompleteHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+					= new Date ();
+			}
+
+			protected function application1_initializeHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ INITIIALIZE_TIME ] = new Date ();
+			}
+
+			protected function application1_preinitializeHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ PREINITIALIZE_TIME ] = new Date ();
+			}
+
+			protected function component_creationCompleteHandler ( event : FlexEvent ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+					= new Date ();
+			}
+
+			protected function component_initializeHandler ( event : FlexEvent ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ INITIIALIZE_TIME ] = new Date ();
+			}
+
+			protected function component_preinitializeHandler ( event : FlexEvent ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ PREINITIALIZE_TIME ] = new Date ();
+			}
+
+			protected function createComponentTimeObject ( identifier : String ) : void {
+				if ( !componentTimes.hasOwnProperty ( identifier ) ) {
+					componentTimes[ identifier ] = new Object ();
+				}
+			}
+
+			protected function measureTimes () : void {
+				var i : int = 0 , cComponent : UIComponent
+					, identifier : String;
+
+				if ( numChildren > 0 ) {
+					while ( i < numChildren ) {
+						cComponent = UIComponent ( getChildAt ( i ) );
+						identifier = cComponent.id;
+						createComponentTimeObject ( identifier );
+						componentTimes[ identifier ][ TOTAL_TIME ]
+							= componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+							- componentTimes[ identifier ][ PREINITIALIZE_TIME ];
+						trace ( identifier + ":"
+							+ componentTimes[ identifier ][ TOTAL_TIME ] );
+						i++;
+					}
+				}
+				trace("testerApp:"+String(componentTimes["testerApp"][APPLICATION_COMPLETE_TIME] - componentTimes["testerApp"][PREINITIALIZE_TIME]));
+
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Button id = "mxButton"
+			   preinitialize = "component_preinitializeHandler(event)"
+			   initialize = "component_initializeHandler(event)"
+			   creationComplete = "component_creationCompleteHandler(event)"
+			   label = "Button">
+	</mx:Button>
+
+	<mx:ButtonBar id = "mxButtonBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:String>Flex</mx:String>
+
+				<mx:String>Flash</mx:String>
+
+				<mx:String>ColdFusion</mx:String>
+
+				<mx:String>Dreamweaver</mx:String>
+
+				<mx:String>Director</mx:String>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:ButtonBar>
+
+	<mx:CheckBox id = "mxCheckBox"
+				 label = "CheckBox"
+				 preinitialize = "component_preinitializeHandler(event)"
+				 initialize = "component_initializeHandler(event)"
+				 creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:CheckBox>
+
+	<mx:ComboBox id = "mxComboBox"
+				 labelField = "label"
+				 prompt = "Select An Item"
+				 preinitialize = "component_preinitializeHandler(event)"
+				 initialize = "component_initializeHandler(event)"
+				 creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label = "Flash" data = "Flash">
+
+				</mx:Object>
+
+				<mx:Object label = "Flex" data = "Flex">
+
+				</mx:Object>
+
+				<mx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</mx:Object>
+
+				<mx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</mx:Object>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:ComboBox>
+
+	<mx:HorizontalList id = "mxHorizontalList"
+					   labelField = "label"
+					   preinitialize = "component_preinitializeHandler(event)"
+					   initialize = "component_initializeHandler(event)"
+					   creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label = "Flash" data = "Flash">
+
+				</mx:Object>
+
+				<mx:Object label = "Flex" data = "Flex">
+
+				</mx:Object>
+
+				<mx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</mx:Object>
+
+				<mx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</mx:Object>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:HorizontalList>
+
+	<mx:HRule id = "mxHRule" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+	</mx:HRule>
+
+	<mx:HScrollBar id = "mxHScrollBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:HScrollBar>
+
+	<mx:HSlider id = "mxHSlider" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:HSlider>
+
+	<mx:Image id = "mxImage"
+			  source = "http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/images/logoION.jpg"
+			  preinitialize = "component_preinitializeHandler(event)"
+			  initialize = "component_initializeHandler(event)"
+			  creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:Image>
+
+	<mx:LinkBar id = "mxLinkBar"
+				itemClick = "navigateToURL(new URLRequest('http://www.adobe.com/' + 
+				String(event.label).toLowerCase()), '_blank');"
+				preinitialize = "component_preinitializeHandler(event)"
+				initialize = "component_initializeHandler(event)"
+				creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:String>Flash</mx:String>
+
+			<mx:String>Director</mx:String>
+
+			<mx:String>Dreamweaver</mx:String>
+
+			<mx:String>ColdFusion</mx:String>
+		</mx:dataProvider>
+	</mx:LinkBar>
+
+	<mx:LinkButton id = "mxLinkButton"
+				   click = "navigateToURL(new URLRequest('http://www.adobe.com/'), '_blank');"
+				   preinitialize = "component_preinitializeHandler(event)"
+				   initialize = "component_initializeHandler(event)"
+				   creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:LinkButton>
+
+	<mx:List id = "mxList" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:String>Flash</mx:String>
+
+				<mx:String>Flex</mx:String>
+
+				<mx:String>Dreamweaver</mx:String>
+
+				<mx:String>Coldfusion</mx:String>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:List>
+
+	<mx:NumericStepper id = "mxNumericStepper" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:NumericStepper>
+
+	<mx:RadioButton id = "mxRadioButton"
+					preinitialize = "component_preinitializeHandler(event)"
+					initialize = "component_initializeHandler(event)"
+					creationComplete = "component_creationCompleteHandler(event)"
+					label = "Yes"
+					value = "yes">
+
+	</mx:RadioButton>
+
+
+
+
+	<mx:TextArea id = "mxTextArea"
+				 preinitialize = "component_preinitializeHandler(event)"
+				 initialize = "component_initializeHandler(event)"
+				 creationComplete = "component_creationCompleteHandler(event)"
+				 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum sed augue tincidunt malesuada eget vitae nisl. Praesent dictum sodales venenatis. Vivamus tempor ligula non justo fermentum in interdum augue tincidunt. Duis gravida lectus sit amet dolor molestie sodales. Maecenas accumsan vestibulum pulvinar. Curabitur id arcu felis, in semper leo. In molestie turpis congue justo sodales congue at luctus enim. Vivamus ac dignissim tortor. Sed vel leo at ligula rutrum bibendum. Maecenas sagittis massa quis ligula feugiat id accumsan sapien faucibus. Duis pulvinar tortor a ipsum euismod luctus. Ut augue dolor, mollis aliquam venenatis non, pellentesque et felis.">
+
+	</mx:TextArea>
+
+	<mx:TabBar id = "mxTabBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label = "Flash" data = "Flash">
+
+				</mx:Object>
+
+				<mx:Object label = "Flex" data = "Flex">
+
+				</mx:Object>
+
+				<mx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</mx:Object>
+
+				<mx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</mx:Object>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:TabBar>
+
+	<mx:TextInput id = "mxTextInput" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:TextInput>
+
+	<mx:TileList id = "mxTileList" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label = "Flash" data = "Flash">
+
+				</mx:Object>
+
+				<mx:Object label = "Flex" data = "Flex">
+
+				</mx:Object>
+
+				<mx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</mx:Object>
+
+				<mx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</mx:Object>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:TileList>
+
+	<mx:ToggleButtonBar id = "mxToggleButtonBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label = "Flash" data = "Flash">
+
+				</mx:Object>
+
+				<mx:Object label = "Flex" data = "Flex">
+
+				</mx:Object>
+
+				<mx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</mx:Object>
+
+				<mx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</mx:Object>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:ToggleButtonBar>
+
+	<mx:VRule id = "mxVRule" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:VRule>
+
+	<mx:VScrollBar id = "mxVScrollBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:VScrollBar>
+
+	<mx:VSlider id = "mxVSlider" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:VSlider>
+
+	<mx:ApplicationControlBar id = "mxApplicationControlBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+	</mx:ApplicationControlBar>
+
+	<mx:Canvas width = "10%"
+			   height = "10%"
+			   id = "mxCanvas"
+			   preinitialize = "component_preinitializeHandler(event)"
+			   initialize = "component_initializeHandler(event)"
+			   creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:Canvas>
+
+	<mx:ControlBar id = "mxControlBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:ControlBar>
+
+	<mx:HBox id = "mxHBox" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:HBox>
+
+	<mx:VBox id = "mxVBox" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:VBox>
+
+	<mx:Panel id = "mxPanel" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:Panel>
+
+	<mx:Tile id = "mxTile" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<mx:Image source = "http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/images/logoION.jpg">
+
+		</mx:Image>
+
+		<mx:Image source = "http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/images/logoION.jpg">
+
+		</mx:Image>
+
+		<mx:Image source = "http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/images/logoION.jpg">
+
+		</mx:Image>
+	</mx:Tile>
+</mx:Application>

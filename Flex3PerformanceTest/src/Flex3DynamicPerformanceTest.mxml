@@ -1,0 +1,204 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml"
+				layout = "vertical"
+				width = "955"
+				height = "600"
+				preinitialize = "application1_preinitializeHandler(event)"
+				initialize = "application1_initializeHandler(event)"
+				creationComplete = "application1_creationCompleteHandler(event)"
+				applicationComplete = "application1_applicationCompleteHandler(event)"
+				addedToStage = "application1_addedToStageHandler(event)" viewSourceURL="srcview/index.html">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Button;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+
+			public static const ADDED_TO_STAGE_TIME : String
+				= "addedToStageTime";
+
+			public static const APPLICATION_COMPLETE_TIME : String
+				= "applicationCompleteTime";
+
+			public static const APPLICATION_NAME : String          = "testerApp";
+
+			public static const CREATION_COMPLETE_TIME : String
+				= "creationCompleteTime";
+
+			public static const INITIALIZE_TIME : String
+				= "initializeTime";
+
+			public static const PREINITIALIZE_TIME : String
+				= "preinitializeTime";
+
+			public static const TOTAL_TIME : String                = "totalTime";
+
+			private var _appEndTime : Date;
+
+			private var _appStartTime : Date;
+
+			private var _componentTimes : Object
+				= new Object ();
+
+			private var _objectAddTimer : Timer;
+
+			private var _objectCounter : int                       = 0;
+
+			public function get componentTimes () : Object {
+				return _componentTimes;
+			}
+
+			public function set componentTimes ( value : Object ) : void {
+				_componentTimes = value;
+			}
+
+			protected function application1_addedToStageHandler ( event : Event ) : void {
+				var time : Date = new Date () , c : UIComponent
+					= UIComponent ( event.target ) , identifier : String;
+				identifier = UIComponent ( c ).id;
+				createComponentTimeObject ( identifier );
+				_componentTimes[ identifier ][ ADDED_TO_STAGE_TIME ] = time;
+			}
+
+			protected function application1_applicationCompleteHandler ( event : FlexEvent ) : void {
+				_appEndTime = new Date ();
+				createComponentTimeObject ( APPLICATION_NAME );
+				_componentTimes[ APPLICATION_NAME ][ APPLICATION_COMPLETE_TIME ]
+					= _appEndTime;
+				_objectAddTimer.start ();
+			}
+
+			protected function application1_creationCompleteHandler ( event : FlexEvent ) : void {
+				var time : Date = new Date ();
+				createComponentTimeObject ( APPLICATION_NAME );
+				_componentTimes[ APPLICATION_NAME ][ CREATION_COMPLETE_TIME ]
+					= time;
+			}
+
+			protected function application1_initializeHandler ( event : FlexEvent ) : void {
+				var time : Date = new Date ();
+				createComponentTimeObject ( APPLICATION_NAME );
+				_componentTimes[ APPLICATION_NAME ][ INITIALIZE_TIME ] = time;
+			}
+
+			protected function application1_preinitializeHandler ( event : FlexEvent ) : void {
+				var time : Date = new Date ();
+				createComponentTimeObject ( APPLICATION_NAME );
+				_componentTimes[ APPLICATION_NAME ][ PREINITIALIZE_TIME ] = time;
+				_objectAddTimer = new Timer ( 10 , 1000 );
+				_objectAddTimer
+					.addEventListener ( TimerEvent.TIMER
+										, objectAddTimerTimerEvent_timerHandler
+										, false , 0 , true );
+				_objectAddTimer
+					.addEventListener ( TimerEvent.TIMER_COMPLETE
+										, objectAddTimerTimerEvent_timerCompleteHandler
+										, false , 0 , true );
+			}
+
+			protected function buttonFlexEvent_creationCompleteHandler ( event : FlexEvent ) : void {
+				var time : Date = new Date () , b : Button
+					= Button ( event.target ) , identifier : String = b.id;
+				b
+					.removeEventListener ( FlexEvent.CREATION_COMPLETE
+										   , buttonFlexEvent_creationCompleteHandler
+										   , false );
+				createComponentTimeObject ( identifier );
+				_componentTimes[ identifier ][ CREATION_COMPLETE_TIME ] = time;
+			}
+
+			protected function buttonFlexEvent_initializeHandler ( event : FlexEvent ) : void {
+				var time : Date = new Date () , b : Button
+					= Button ( event.target ) , identifier : String = b.id;
+				b
+					.removeEventListener ( FlexEvent.INITIALIZE
+										   , buttonFlexEvent_initializeHandler
+										   , false );
+				createComponentTimeObject ( identifier );
+				_componentTimes[ identifier ][ INITIALIZE_TIME ] = time;
+			}
+
+			protected function buttonFlexEvent_preinitializeHandler ( event : FlexEvent ) : void {
+				var time : Date = new Date () , b : Button
+					= Button ( event.target ) , identifier : String = b.id;
+				b
+					.removeEventListener ( FlexEvent.PREINITIALIZE
+										   , buttonFlexEvent_preinitializeHandler
+										   , false );
+				createComponentTimeObject ( identifier );
+				_componentTimes[ identifier ][ PREINITIALIZE_TIME ] = time;
+			}
+
+			protected function createComponentTimeObject ( identifier : String ) {
+				if ( !_componentTimes.hasOwnProperty ( identifier ) ) {
+					_componentTimes[ identifier ] = new Object ();
+				}
+			}
+
+			protected function measureTimes () : void {
+				var i : int = 0 , cComponent : UIComponent , identifier : String
+					, d1 : Date , d2 : Date;
+
+				if ( numChildren > 0 ) {
+					while ( i < numChildren ) {
+
+						cComponent = UIComponent ( getChildAt ( i ) );
+
+						if ( cComponent is UIComponent ) {
+							identifier = cComponent.id;
+							createComponentTimeObject ( identifier );
+							d1
+								= componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+								as Date;
+							d2
+								= componentTimes[ identifier ][ PREINITIALIZE_TIME ]
+								as Date;
+							componentTimes[ identifier ][ TOTAL_TIME ]
+								= componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+								- componentTimes[ identifier ][ PREINITIALIZE_TIME ];
+							trace ( componentTimes[ identifier ][ TOTAL_TIME ] );
+						}
+						i++;
+					}
+				}
+				trace ( APPLICATION_NAME + ": "
+					+ String ( componentTimes[ APPLICATION_NAME ][ APPLICATION_COMPLETE_TIME ]
+					- componentTimes[ APPLICATION_NAME ][ PREINITIALIZE_TIME ] ) );
+
+			}
+
+			protected function objectAddTimerTimerEvent_timerCompleteHandler ( event : TimerEvent ) : void {
+				_objectAddTimer
+					.removeEventListener ( TimerEvent.TIMER
+										   , objectAddTimerTimerEvent_timerHandler
+										   , false );
+				_objectAddTimer
+					.removeEventListener ( TimerEvent.TIMER_COMPLETE
+										   , objectAddTimerTimerEvent_timerCompleteHandler
+										   , false );
+				measureTimes ();
+			}
+
+			protected function objectAddTimerTimerEvent_timerHandler ( event : TimerEvent ) : void {
+				var time : Date = new Date () , b : Button = new Button ();
+				b.id = "button_" + String ( _objectCounter++ );
+				b.label = b.id;
+				createComponentTimeObject ( b.id );
+				_componentTimes[ b.id ][ PREINITIALIZE_TIME ] = time;
+				b
+					.addEventListener ( FlexEvent.PREINITIALIZE
+										, buttonFlexEvent_preinitializeHandler
+										, false , 0 , false );
+				b
+					.addEventListener ( FlexEvent.INITIALIZE
+										, buttonFlexEvent_initializeHandler
+										, false , 0 , false );
+				b
+					.addEventListener ( FlexEvent.CREATION_COMPLETE
+										, buttonFlexEvent_creationCompleteHandler
+										, false , 0 , false );
+				addChild ( b );
+			}
+		]]>
+	</mx:Script>
+</mx:Application>

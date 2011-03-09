@@ -1,0 +1,628 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml"
+				layout = "vertical"
+				width = "955"
+				height = "600"
+				preinitialize = "application1_preinitializeHandler(event)"
+				applicationComplete = "application1_applicationCompleteHandler(event)" viewSourceURL="srcview/index.html">
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+
+			private var _appEndTime : Date;
+
+			private var _appStartTime : Date;
+
+			protected function application1_applicationCompleteHandler ( event : FlexEvent ) : void {
+				// TODO Auto-generated method stub
+				_appEndTime = new Date ();
+				trace ( String ( _appEndTime.time - _appStartTime.time ) );
+			}
+
+			protected function application1_preinitializeHandler ( event : FlexEvent ) : void {
+				// TODO Auto-generated method stub
+				_appStartTime = new Date ();
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Button label = 'Button0' />
+
+	<mx:Button label = 'Button1' />
+
+	<mx:Button label = 'Button2' />
+
+	<mx:Button label = 'Button3' />
+
+	<mx:Button label = 'Button4' />
+
+	<mx:Button label = 'Button5' />
+
+	<mx:Button label = 'Button6' />
+
+	<mx:Button label = 'Button7' />
+
+	<mx:Button label = 'Button8' />
+
+	<mx:Button label = 'Button9' />
+
+	<mx:Button label = 'Button10' />
+
+	<mx:Button label = 'Button11' />
+
+	<mx:Button label = 'Button12' />
+
+	<mx:Button label = 'Button13' />
+
+	<mx:Button label = 'Button14' />
+
+	<mx:Button label = 'Button15' />
+
+	<mx:Button label = 'Button16' />
+
+	<mx:Button label = 'Button17' />
+
+	<mx:Button label = 'Button18' />
+
+	<mx:Button label = 'Button19' />
+
+	<mx:Button label = 'Button20' />
+
+	<mx:Button label = 'Button21' />
+
+	<mx:Button label = 'Button22' />
+
+	<mx:Button label = 'Button23' />
+
+	<mx:Button label = 'Button24' />
+
+	<mx:Button label = 'Button25' />
+
+	<mx:Button label = 'Button26' />
+
+	<mx:Button label = 'Button27' />
+
+	<mx:Button label = 'Button28' />
+
+	<mx:Button label = 'Button29' />
+
+	<mx:Button label = 'Button30' />
+
+	<mx:Button label = 'Button31' />
+
+	<mx:Button label = 'Button32' />
+
+	<mx:Button label = 'Button33' />
+
+	<mx:Button label = 'Button34' />
+
+	<mx:Button label = 'Button35' />
+
+	<mx:Button label = 'Button36' />
+
+	<mx:Button label = 'Button37' />
+
+	<mx:Button label = 'Button38' />
+
+	<mx:Button label = 'Button39' />
+
+	<mx:Button label = 'Button40' />
+
+	<mx:Button label = 'Button41' />
+
+	<mx:Button label = 'Button42' />
+
+	<mx:Button label = 'Button43' />
+
+	<mx:Button label = 'Button44' />
+
+	<mx:Button label = 'Button45' />
+
+	<mx:Button label = 'Button46' />
+
+	<mx:Button label = 'Button47' />
+
+	<mx:Button label = 'Button48' />
+
+	<mx:Button label = 'Button49' />
+
+	<mx:Button label = 'Button50' />
+
+	<mx:Button label = 'Button51' />
+
+	<mx:Button label = 'Button52' />
+
+	<mx:Button label = 'Button53' />
+
+	<mx:Button label = 'Button54' />
+
+	<mx:Button label = 'Button55' />
+
+	<mx:Button label = 'Button56' />
+
+	<mx:Button label = 'Button57' />
+
+	<mx:Button label = 'Button58' />
+
+	<mx:Button label = 'Button59' />
+
+	<mx:Button label = 'Button60' />
+
+	<mx:Button label = 'Button61' />
+
+	<mx:Button label = 'Button62' />
+
+	<mx:Button label = 'Button63' />
+
+	<mx:Button label = 'Button64' />
+
+	<mx:Button label = 'Button65' />
+
+	<mx:Button label = 'Button66' />
+
+	<mx:Button label = 'Button67' />
+
+	<mx:Button label = 'Button68' />
+
+	<mx:Button label = 'Button69' />
+
+	<mx:Button label = 'Button70' />
+
+	<mx:Button label = 'Button71' />
+
+	<mx:Button label = 'Button72' />
+
+	<mx:Button label = 'Button73' />
+
+	<mx:Button label = 'Button74' />
+
+	<mx:Button label = 'Button75' />
+
+	<mx:Button label = 'Button76' />
+
+	<mx:Button label = 'Button77' />
+
+	<mx:Button label = 'Button78' />
+
+	<mx:Button label = 'Button79' />
+
+	<mx:Button label = 'Button80' />
+
+	<mx:Button label = 'Button81' />
+
+	<mx:Button label = 'Button82' />
+
+	<mx:Button label = 'Button83' />
+
+	<mx:Button label = 'Button84' />
+
+	<mx:Button label = 'Button85' />
+
+	<mx:Button label = 'Button86' />
+
+	<mx:Button label = 'Button87' />
+
+	<mx:Button label = 'Button88' />
+
+	<mx:Button label = 'Button89' />
+
+	<mx:Button label = 'Button90' />
+
+	<mx:Button label = 'Button91' />
+
+	<mx:Button label = 'Button92' />
+
+	<mx:Button label = 'Button93' />
+
+	<mx:Button label = 'Button94' />
+
+	<mx:Button label = 'Button95' />
+
+	<mx:Button label = 'Button96' />
+
+	<mx:Button label = 'Button97' />
+
+	<mx:Button label = 'Button98' />
+
+	<mx:Button label = 'Button99' />
+
+	<mx:Button label = 'Button100' />
+
+	<mx:Button label = 'Button101' />
+
+	<mx:Button label = 'Button102' />
+
+	<mx:Button label = 'Button103' />
+
+	<mx:Button label = 'Button104' />
+
+	<mx:Button label = 'Button105' />
+
+	<mx:Button label = 'Button106' />
+
+	<mx:Button label = 'Button107' />
+
+	<mx:Button label = 'Button108' />
+
+	<mx:Button label = 'Button109' />
+
+	<mx:Button label = 'Button110' />
+
+	<mx:Button label = 'Button111' />
+
+	<mx:Button label = 'Button112' />
+
+	<mx:Button label = 'Button113' />
+
+	<mx:Button label = 'Button114' />
+
+	<mx:Button label = 'Button115' />
+
+	<mx:Button label = 'Button116' />
+
+	<mx:Button label = 'Button117' />
+
+	<mx:Button label = 'Button118' />
+
+	<mx:Button label = 'Button119' />
+
+	<mx:Button label = 'Button120' />
+
+	<mx:Button label = 'Button121' />
+
+	<mx:Button label = 'Button122' />
+
+	<mx:Button label = 'Button123' />
+
+	<mx:Button label = 'Button124' />
+
+	<mx:Button label = 'Button125' />
+
+	<mx:Button label = 'Button126' />
+
+	<mx:Button label = 'Button127' />
+
+	<mx:Button label = 'Button128' />
+
+	<mx:Button label = 'Button129' />
+
+	<mx:Button label = 'Button130' />
+
+	<mx:Button label = 'Button131' />
+
+	<mx:Button label = 'Button132' />
+
+	<mx:Button label = 'Button133' />
+
+	<mx:Button label = 'Button134' />
+
+	<mx:Button label = 'Button135' />
+
+	<mx:Button label = 'Button136' />
+
+	<mx:Button label = 'Button137' />
+
+	<mx:Button label = 'Button138' />
+
+	<mx:Button label = 'Button139' />
+
+	<mx:Button label = 'Button140' />
+
+	<mx:Button label = 'Button141' />
+
+	<mx:Button label = 'Button142' />
+
+	<mx:Button label = 'Button143' />
+
+	<mx:Button label = 'Button144' />
+
+	<mx:Button label = 'Button145' />
+
+	<mx:Button label = 'Button146' />
+
+	<mx:Button label = 'Button147' />
+
+	<mx:Button label = 'Button148' />
+
+	<mx:Button label = 'Button149' />
+
+	<mx:Button label = 'Button150' />
+
+	<mx:Button label = 'Button151' />
+
+	<mx:Button label = 'Button152' />
+
+	<mx:Button label = 'Button153' />
+
+	<mx:Button label = 'Button154' />
+
+	<mx:Button label = 'Button155' />
+
+	<mx:Button label = 'Button156' />
+
+	<mx:Button label = 'Button157' />
+
+	<mx:Button label = 'Button158' />
+
+	<mx:Button label = 'Button159' />
+
+	<mx:Button label = 'Button160' />
+
+	<mx:Button label = 'Button161' />
+
+	<mx:Button label = 'Button162' />
+
+	<mx:Button label = 'Button163' />
+
+	<mx:Button label = 'Button164' />
+
+	<mx:Button label = 'Button165' />
+
+	<mx:Button label = 'Button166' />
+
+	<mx:Button label = 'Button167' />
+
+	<mx:Button label = 'Button168' />
+
+	<mx:Button label = 'Button169' />
+
+	<mx:Button label = 'Button170' />
+
+	<mx:Button label = 'Button171' />
+
+	<mx:Button label = 'Button172' />
+
+	<mx:Button label = 'Button173' />
+
+	<mx:Button label = 'Button174' />
+
+	<mx:Button label = 'Button175' />
+
+	<mx:Button label = 'Button176' />
+
+	<mx:Button label = 'Button177' />
+
+	<mx:Button label = 'Button178' />
+
+	<mx:Button label = 'Button179' />
+
+	<mx:Button label = 'Button180' />
+
+	<mx:Button label = 'Button181' />
+
+	<mx:Button label = 'Button182' />
+
+	<mx:Button label = 'Button183' />
+
+	<mx:Button label = 'Button184' />
+
+	<mx:Button label = 'Button185' />
+
+	<mx:Button label = 'Button186' />
+
+	<mx:Button label = 'Button187' />
+
+	<mx:Button label = 'Button188' />
+
+	<mx:Button label = 'Button189' />
+
+	<mx:Button label = 'Button190' />
+
+	<mx:Button label = 'Button191' />
+
+	<mx:Button label = 'Button192' />
+
+	<mx:Button label = 'Button193' />
+
+	<mx:Button label = 'Button194' />
+
+	<mx:Button label = 'Button195' />
+
+	<mx:Button label = 'Button196' />
+
+	<mx:Button label = 'Button197' />
+
+	<mx:Button label = 'Button198' />
+
+	<mx:Button label = 'Button199' />
+
+	<mx:Button label = 'Button200' />
+
+	<mx:Button label = 'Button201' />
+
+	<mx:Button label = 'Button202' />
+
+	<mx:Button label = 'Button203' />
+
+	<mx:Button label = 'Button204' />
+
+	<mx:Button label = 'Button205' />
+
+	<mx:Button label = 'Button206' />
+
+	<mx:Button label = 'Button207' />
+
+	<mx:Button label = 'Button208' />
+
+	<mx:Button label = 'Button209' />
+
+	<mx:Button label = 'Button210' />
+
+	<mx:Button label = 'Button211' />
+
+	<mx:Button label = 'Button212' />
+
+	<mx:Button label = 'Button213' />
+
+	<mx:Button label = 'Button214' />
+
+	<mx:Button label = 'Button215' />
+
+	<mx:Button label = 'Button216' />
+
+	<mx:Button label = 'Button217' />
+
+	<mx:Button label = 'Button218' />
+
+	<mx:Button label = 'Button219' />
+
+	<mx:Button label = 'Button220' />
+
+	<mx:Button label = 'Button221' />
+
+	<mx:Button label = 'Button222' />
+
+	<mx:Button label = 'Button223' />
+
+	<mx:Button label = 'Button224' />
+
+	<mx:Button label = 'Button225' />
+
+	<mx:Button label = 'Button226' />
+
+	<mx:Button label = 'Button227' />
+
+	<mx:Button label = 'Button228' />
+
+	<mx:Button label = 'Button229' />
+
+	<mx:Button label = 'Button230' />
+
+	<mx:Button label = 'Button231' />
+
+	<mx:Button label = 'Button232' />
+
+	<mx:Button label = 'Button233' />
+
+	<mx:Button label = 'Button234' />
+
+	<mx:Button label = 'Button235' />
+
+	<mx:Button label = 'Button236' />
+
+	<mx:Button label = 'Button237' />
+
+	<mx:Button label = 'Button238' />
+
+	<mx:Button label = 'Button239' />
+
+	<mx:Button label = 'Button240' />
+
+	<mx:Button label = 'Button241' />
+
+	<mx:Button label = 'Button242' />
+
+	<mx:Button label = 'Button243' />
+
+	<mx:Button label = 'Button244' />
+
+	<mx:Button label = 'Button245' />
+
+	<mx:Button label = 'Button246' />
+
+	<mx:Button label = 'Button247' />
+
+	<mx:Button label = 'Button248' />
+
+	<mx:Button label = 'Button249' />
+
+	<mx:Button label = 'Button250' />
+
+	<mx:Button label = 'Button251' />
+
+	<mx:Button label = 'Button252' />
+
+	<mx:Button label = 'Button253' />
+
+	<mx:Button label = 'Button254' />
+
+	<mx:Button label = 'Button255' />
+
+	<mx:Button label = 'Button256' />
+
+	<mx:Button label = 'Button257' />
+
+	<mx:Button label = 'Button258' />
+
+	<mx:Button label = 'Button259' />
+
+	<mx:Button label = 'Button260' />
+
+	<mx:Button label = 'Button261' />
+
+	<mx:Button label = 'Button262' />
+
+	<mx:Button label = 'Button263' />
+
+	<mx:Button label = 'Button264' />
+
+	<mx:Button label = 'Button265' />
+
+	<mx:Button label = 'Button266' />
+
+	<mx:Button label = 'Button267' />
+
+	<mx:Button label = 'Button268' />
+
+	<mx:Button label = 'Button269' />
+
+	<mx:Button label = 'Button270' />
+
+	<mx:Button label = 'Button271' />
+
+	<mx:Button label = 'Button272' />
+
+	<mx:Button label = 'Button273' />
+
+	<mx:Button label = 'Button274' />
+
+	<mx:Button label = 'Button275' />
+
+	<mx:Button label = 'Button276' />
+
+	<mx:Button label = 'Button277' />
+
+	<mx:Button label = 'Button278' />
+
+	<mx:Button label = 'Button279' />
+
+	<mx:Button label = 'Button280' />
+
+	<mx:Button label = 'Button281' />
+
+	<mx:Button label = 'Button282' />
+
+	<mx:Button label = 'Button283' />
+
+	<mx:Button label = 'Button284' />
+
+	<mx:Button label = 'Button285' />
+
+	<mx:Button label = 'Button286' />
+
+	<mx:Button label = 'Button287' />
+
+	<mx:Button label = 'Button288' />
+
+	<mx:Button label = 'Button289' />
+
+	<mx:Button label = 'Button290' />
+
+	<mx:Button label = 'Button291' />
+
+	<mx:Button label = 'Button292' />
+
+	<mx:Button label = 'Button293' />
+
+	<mx:Button label = 'Button294' />
+
+	<mx:Button label = 'Button295' />
+
+	<mx:Button label = 'Button296' />
+
+	<mx:Button label = 'Button297' />
+
+	<mx:Button label = 'Button298' />
+
+	<mx:Button label = 'Button299' />
+</mx:Application>

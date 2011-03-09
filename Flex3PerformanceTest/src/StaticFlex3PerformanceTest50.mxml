@@ -1,0 +1,128 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml"
+				layout = "vertical"
+				width = "955"
+				height = "600"
+				preinitialize = "application1_preinitializeHandler(event)"
+				applicationComplete = "application1_applicationCompleteHandler(event)">
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+
+			private var _appEndTime : Date;
+
+			private var _appStartTime : Date;
+
+			protected function application1_applicationCompleteHandler ( event : FlexEvent ) : void {
+				// TODO Auto-generated method stub
+				_appEndTime = new Date ();
+				trace ( String ( _appEndTime.time - _appStartTime.time ) );
+			}
+
+			protected function application1_preinitializeHandler ( event : FlexEvent ) : void {
+				// TODO Auto-generated method stub
+				_appStartTime = new Date ();
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Button label = 'Button0' />
+
+	<mx:Button label = 'Button1' />
+
+	<mx:Button label = 'Button2' />
+
+	<mx:Button label = 'Button3' />
+
+	<mx:Button label = 'Button4' />
+
+	<mx:Button label = 'Button5' />
+
+	<mx:Button label = 'Button6' />
+
+	<mx:Button label = 'Button7' />
+
+	<mx:Button label = 'Button8' />
+
+	<mx:Button label = 'Button9' />
+
+	<mx:Button label = 'Button10' />
+
+	<mx:Button label = 'Button11' />
+
+	<mx:Button label = 'Button12' />
+
+	<mx:Button label = 'Button13' />
+
+	<mx:Button label = 'Button14' />
+
+	<mx:Button label = 'Button15' />
+
+	<mx:Button label = 'Button16' />
+
+	<mx:Button label = 'Button17' />
+
+	<mx:Button label = 'Button18' />
+
+	<mx:Button label = 'Button19' />
+
+	<mx:Button label = 'Button20' />
+
+	<mx:Button label = 'Button21' />
+
+	<mx:Button label = 'Button22' />
+
+	<mx:Button label = 'Button23' />
+
+	<mx:Button label = 'Button24' />
+
+	<mx:Button label = 'Button25' />
+
+	<mx:Button label = 'Button26' />
+
+	<mx:Button label = 'Button27' />
+
+	<mx:Button label = 'Button28' />
+
+	<mx:Button label = 'Button29' />
+
+	<mx:Button label = 'Button30' />
+
+	<mx:Button label = 'Button31' />
+
+	<mx:Button label = 'Button32' />
+
+	<mx:Button label = 'Button33' />
+
+	<mx:Button label = 'Button34' />
+
+	<mx:Button label = 'Button35' />
+
+	<mx:Button label = 'Button36' />
+
+	<mx:Button label = 'Button37' />
+
+	<mx:Button label = 'Button38' />
+
+	<mx:Button label = 'Button39' />
+
+	<mx:Button label = 'Button40' />
+
+	<mx:Button label = 'Button41' />
+
+	<mx:Button label = 'Button42' />
+
+	<mx:Button label = 'Button43' />
+
+	<mx:Button label = 'Button44' />
+
+	<mx:Button label = 'Button45' />
+
+	<mx:Button label = 'Button46' />
+
+	<mx:Button label = 'Button47' />
+
+	<mx:Button label = 'Button48' />
+
+	<mx:Button label = 'Button49' />
+</mx:Application>

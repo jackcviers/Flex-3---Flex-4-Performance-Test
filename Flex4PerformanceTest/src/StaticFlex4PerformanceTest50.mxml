@@ -1,0 +1,139 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<s:Application xmlns:fx = "http://ns.adobe.com/mxml/2009"
+			   xmlns:s = "library://ns.adobe.com/flex/spark"
+			   xmlns:mx = "library://ns.adobe.com/flex/mx"
+			   width = "955"
+			   height = "600"
+			   skinClass = "skins.ScrollableApplicationSkin"
+			   preinitialize = "application1_preinitializeHandler(event)"
+			   applicationComplete = "application1_applicationCompleteHandler(event)">
+	<s:layout>
+		<s:VerticalLayout />
+	</s:layout>
+
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+
+			private var _appEndTime : Date;
+
+			private var _appStartTime : Date;
+
+			protected function application1_applicationCompleteHandler ( event : FlexEvent ) : void {
+				// TODO Auto-generated method stub
+				_appEndTime = new Date ();
+				trace ( String ( _appEndTime.time - _appStartTime.time ) );
+			}
+
+			protected function application1_preinitializeHandler ( event : FlexEvent ) : void {
+				// TODO Auto-generated method stub
+				_appStartTime = new Date ();
+			}
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+
+	<s:Button label = 'Button0' />
+
+	<s:Button label = 'Button1' />
+
+	<s:Button label = 'Button2' />
+
+	<s:Button label = 'Button3' />
+
+	<s:Button label = 'Button4' />
+
+	<s:Button label = 'Button5' />
+
+	<s:Button label = 'Button6' />
+
+	<s:Button label = 'Button7' />
+
+	<s:Button label = 'Button8' />
+
+	<s:Button label = 'Button9' />
+
+	<s:Button label = 'Button10' />
+
+	<s:Button label = 'Button11' />
+
+	<s:Button label = 'Button12' />
+
+	<s:Button label = 'Button13' />
+
+	<s:Button label = 'Button14' />
+
+	<s:Button label = 'Button15' />
+
+	<s:Button label = 'Button16' />
+
+	<s:Button label = 'Button17' />
+
+	<s:Button label = 'Button18' />
+
+	<s:Button label = 'Button19' />
+
+	<s:Button label = 'Button20' />
+
+	<s:Button label = 'Button21' />
+
+	<s:Button label = 'Button22' />
+
+	<s:Button label = 'Button23' />
+
+	<s:Button label = 'Button24' />
+
+	<s:Button label = 'Button25' />
+
+	<s:Button label = 'Button26' />
+
+	<s:Button label = 'Button27' />
+
+	<s:Button label = 'Button28' />
+
+	<s:Button label = 'Button29' />
+
+	<s:Button label = 'Button30' />
+
+	<s:Button label = 'Button31' />
+
+	<s:Button label = 'Button32' />
+
+	<s:Button label = 'Button33' />
+
+	<s:Button label = 'Button34' />
+
+	<s:Button label = 'Button35' />
+
+	<s:Button label = 'Button36' />
+
+	<s:Button label = 'Button37' />
+
+	<s:Button label = 'Button38' />
+
+	<s:Button label = 'Button39' />
+
+	<s:Button label = 'Button40' />
+
+	<s:Button label = 'Button41' />
+
+	<s:Button label = 'Button42' />
+
+	<s:Button label = 'Button43' />
+
+	<s:Button label = 'Button44' />
+
+	<s:Button label = 'Button45' />
+
+	<s:Button label = 'Button46' />
+
+	<s:Button label = 'Button47' />
+
+	<s:Button label = 'Button48' />
+
+	<s:Button label = 'Button49' />
+</s:Application>

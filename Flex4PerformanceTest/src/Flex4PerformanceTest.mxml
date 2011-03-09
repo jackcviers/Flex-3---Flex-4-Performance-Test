@@ -1,0 +1,496 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<s:Application xmlns:fx = "http://ns.adobe.com/mxml/2009"
+			   xmlns:s = "library://ns.adobe.com/flex/spark"
+			   xmlns:mx = "library://ns.adobe.com/flex/mx"
+			   width = "955"
+			   height = "600"
+			   initialize = "application1_initializeHandler(event)"
+			   preinitialize = "application1_preinitializeHandler(event)"
+			   creationComplete = "application1_creationCompleteHandler(event)"
+			   addedToStage = "application1_addedToStageHandler(event)"
+			   applicationComplete = "application1_applicationCompleteHandler(event)"
+			   skinClass="skins.ScrollableApplicationSkin" viewSourceURL="srcview/index.html">
+	<fx:Declarations>
+
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+
+	</fx:Declarations>
+
+	<fx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+			
+			import mx.collections.ArrayCollection;
+			import mx.core.IVisualElement;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			
+			import spark.events.IndexChangeEvent;
+
+			public static const ADDED_TO_STAGE_TIME : String
+				= 'addedToStageTime';
+
+			public static const APPLICATION_COMPLETE_TIME : String
+				= 'applicationCompleteTime';
+
+			public static const CREATION_COMPLETE_TIME : String
+				= 'creationCompleteTime';
+
+			public static const INITIIALIZE_TIME : String = 'initializeTime';
+
+			public static const PREINITIALIZE_TIME : String
+				= 'preinitializeTime';
+
+			public static const TOTAL_TIME : String = "totalTime";
+
+			public var componentTimes : Object = new Object ();
+
+			public var startTime : Date = new Date ();
+
+			protected function application1_addedToStageHandler ( event : Event ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ ADDED_TO_STAGE_TIME ]
+					= new Date ();
+			}
+
+			protected function application1_applicationCompleteHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ APPLICATION_COMPLETE_TIME ]
+					= new Date ();
+				measureTimes ();
+
+			}
+
+			protected function application1_creationCompleteHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+					= new Date ();
+			}
+
+			protected function application1_initializeHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ INITIIALIZE_TIME ] = new Date ();
+			}
+
+			protected function application1_preinitializeHandler ( event : FlexEvent ) : void {
+				var identifier : String = "testerApp";
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ PREINITIALIZE_TIME ] = new Date ();
+			}
+
+			protected function component_creationCompleteHandler ( event : FlexEvent ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+					= new Date ();
+			}
+
+			protected function component_initializeHandler ( event : FlexEvent ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ INITIIALIZE_TIME ] = new Date ();
+			}
+
+			protected function component_preinitializeHandler ( event : FlexEvent ) : void {
+				var uicomponent : UIComponent = UIComponent ( event.target )
+					, identifier : String = uicomponent.id;
+				createComponentTimeObject ( identifier );
+				componentTimes[ identifier ][ PREINITIALIZE_TIME ] = new Date ();
+			}
+
+			protected function createComponentTimeObject ( identifier : String ) : void {
+				if ( !componentTimes.hasOwnProperty ( identifier ) ) {
+					componentTimes[ identifier ] = new Object ();
+				}
+			}
+
+			protected function measureTimes () : void {
+				var i : int = 0 , cComponent : IVisualElement
+					, identifier : String;
+
+				if ( numElements > 0 ) {
+					while ( i < numElements ) {
+						
+						cComponent = IVisualElement ( getElementAt ( i ) );
+						if(cComponent is UIComponent){
+						identifier = UIComponent(cComponent).id;
+						createComponentTimeObject ( identifier );
+						componentTimes[ identifier ][ TOTAL_TIME ]
+							= componentTimes[ identifier ][ CREATION_COMPLETE_TIME ]
+							- componentTimes[ identifier ][ PREINITIALIZE_TIME ];
+						trace ( identifier + ":"
+							+ componentTimes[ identifier ][ TOTAL_TIME ] );
+						}
+						i++;
+					}
+				}
+				trace("testerApp:"+String(componentTimes["testerApp"][APPLICATION_COMPLETE_TIME] - componentTimes["testerApp"][PREINITIALIZE_TIME])); 
+
+			}
+
+			protected function sLinkBar_changeHandler ( event : IndexChangeEvent ) : void {
+				// TODO Auto-generated method stub
+				navigateToURL ( new URLRequest ( ButtonBar ( event.target )
+					.selectedItem.data ) , '_blank' );
+			}
+		]]>
+	</fx:Script>
+
+	<s:layout>
+		<s:VerticalLayout clipAndEnableScrolling = "true">
+
+		</s:VerticalLayout>
+	</s:layout>
+
+
+
+	<s:Button id = "sButton"
+			  preinitialize = "component_preinitializeHandler(event)"
+			  initialize = "component_initializeHandler(event)"
+			  creationComplete = "component_creationCompleteHandler(event)"
+			  label = "Button">
+
+	</s:Button>
+
+	<s:ButtonBar id = "sButtonBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:String>Flex</fx:String>
+
+				<fx:String>Flash</fx:String>
+
+				<fx:String>Dreamweaver</fx:String>
+
+				<fx:String>Coldfusion</fx:String>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:ButtonBar>
+
+	<s:CheckBox id = "sCheckBox"
+				preinitialize = "component_preinitializeHandler(event)"
+				initialize = "component_initializeHandler(event)"
+				creationComplete = "component_creationCompleteHandler(event)"
+				label = "Check Me:">
+
+	</s:CheckBox>
+
+	<s:DropDownList id = "sDropDownList"
+					prompt = "Select one..."
+					labelField = "label"
+					preinitialize = "component_preinitializeHandler(event)"
+					initialize = "component_initializeHandler(event)"
+					creationComplete = "component_creationCompleteHandler(event)">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object label = "Flex" data = "Flex">
+
+				</fx:Object>
+
+				<fx:Object label = "Flash" data = "Flash">
+
+				</fx:Object>
+
+				<fx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</fx:Object>
+
+				<fx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</fx:Object>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:DropDownList>
+
+	<s:List id = "sHList" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:String>Flex</fx:String>
+
+				<fx:String>Flash</fx:String>
+
+				<fx:String>Dreamweaver</fx:String>
+
+				<fx:String>Coldfusion</fx:String>
+			</s:ArrayCollection>
+		</s:dataProvider>
+
+		<s:layout>
+			<s:HorizontalLayout>
+
+			</s:HorizontalLayout>
+		</s:layout>
+	</s:List>
+
+	<s:HScrollBar id = "sHScrollBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</s:HScrollBar>
+
+	<s:HSlider id = "sHSlider" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</s:HSlider>
+
+	<mx:Image id = "mxImage"
+			  source = "http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/images/logoION.jpg"
+			  preinitialize = "component_preinitializeHandler(event)"
+			  initialize = "component_initializeHandler(event)"
+			  creationComplete = "component_creationCompleteHandler(event)">
+
+	</mx:Image>
+
+	<s:ButtonBar skinClass = "skins.LinkBarSkin"
+				 id = "sLinkBar"
+				 preinitialize = "component_preinitializeHandler(event)"
+				 initialize = "component_initializeHandler(event)"
+				 creationComplete = "component_creationCompleteHandler(event)"
+				 labelField = "label"
+				 change = "sLinkBar_changeHandler(event)">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object label = "Flex" data = "http://adobe.com/flex">
+
+				</fx:Object>
+
+				<fx:Object label = "Flash" data = "http://adobe.com/flash">
+
+				</fx:Object>
+
+				<fx:Object label = "Dreamweaver" data = "http://adobe.com/dreamweaver">
+
+				</fx:Object>
+
+				<fx:Object label = "Coldfusion" data = "http://adobe.com/coldfusion">
+
+				</fx:Object>
+			</s:ArrayCollection>
+		</s:dataProvider>
+
+		<s:layout>
+			<s:HorizontalLayout variableColumnWidth = "true">
+
+			</s:HorizontalLayout>
+		</s:layout>
+	</s:ButtonBar>
+
+	<s:Button skinClass = "skins.LinkButtonSkin"
+			  preinitialize = "component_preinitializeHandler(event)"
+			  initialize = "component_initializeHandler(event)"
+			  creationComplete = "component_creationCompleteHandler(event)"
+			  label = "LinkButton"
+			  id="linkButton">
+
+	</s:Button>
+
+	<s:List id = "sList"
+			preinitialize = "component_preinitializeHandler(event)"
+			initialize = "component_initializeHandler(event)"
+			creationComplete = "component_creationCompleteHandler(event)"
+			labelField = "label">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object label = "Flash" data = "Flash">
+
+				</fx:Object>
+
+				<fx:Object label = "Flex" data = "Flex">
+
+				</fx:Object>
+
+				<fx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</fx:Object>
+
+				<fx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</fx:Object>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:List>
+
+	<s:NumericStepper id = "sNumericStepper" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</s:NumericStepper>
+
+	<s:RadioButton id = "sRadioButton"
+				   preinitialize = "component_preinitializeHandler(event)"
+				   initialize = "component_initializeHandler(event)"
+				   creationComplete = "component_creationCompleteHandler(event)"
+				   label = "Yes">
+
+	</s:RadioButton>
+
+	<s:TextArea id = "sTextArea"
+				preinitialize = "component_preinitializeHandler(event)"
+				initialize = "component_initializeHandler(event)"
+				creationComplete = "component_creationCompleteHandler(event)"
+				text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum sed augue tincidunt malesuada eget vitae nisl. Praesent dictum sodales venenatis. Vivamus tempor ligula non justo fermentum in interdum augue tincidunt. Duis gravida lectus sit amet dolor molestie sodales. Maecenas accumsan vestibulum pulvinar. Curabitur id arcu felis, in semper leo. In molestie turpis congue justo sodales congue at luctus enim. Vivamus ac dignissim tortor. Sed vel leo at ligula rutrum bibendum. Maecenas sagittis massa quis ligula feugiat id accumsan sapien faucibus. Duis pulvinar tortor a ipsum euismod luctus. Ut augue dolor, mollis aliquam venenatis non, pellentesque et felis.">
+
+	</s:TextArea>
+
+	<s:TabBar id = "sTabBar"
+			  preinitialize = "component_preinitializeHandler(event)"
+			  initialize = "component_initializeHandler(event)"
+			  creationComplete = "component_creationCompleteHandler(event)"
+			  labelField = "label">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object label = "Flash" data = "Flash">
+
+				</fx:Object>
+
+				<fx:Object label = "Flex" data = "Flex">
+
+				</fx:Object>
+
+				<fx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</fx:Object>
+
+				<fx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</fx:Object>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:TabBar>
+
+	<s:TextInput id = "sTextInput"
+				 preinitialize = "component_preinitializeHandler(event)"
+				 initialize = "component_initializeHandler(event)"
+				 creationComplete = "component_creationCompleteHandler(event)"
+				 text = "Test">
+
+	</s:TextInput>
+
+	<s:List id = "sTileList"
+			preinitialize = "component_preinitializeHandler(event)"
+			initialize = "component_initializeHandler(event)"
+			creationComplete = "component_creationCompleteHandler(event)"
+			labelField = "label">
+		<s:layout>
+			<s:TileLayout requestedColumnCount = "2" requestedRowCount = "2">
+
+			</s:TileLayout>
+		</s:layout>
+
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object label = "Flash" data = "Flash">
+
+				</fx:Object>
+
+				<fx:Object label = "Flex" data = "Flex">
+
+				</fx:Object>
+
+				<fx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</fx:Object>
+
+				<fx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</fx:Object>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:List>
+
+	<s:ButtonBar id = "sToggleButtonBar"
+				 requireSelection = "true"
+				 preinitialize = "component_preinitializeHandler(event)"
+				 initialize = "component_initializeHandler(event)"
+				 creationComplete = "component_creationCompleteHandler(event)"
+				 selectedIndex = "0"
+				 labelField = "label">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:Object label = "Flash" data = "Flash">
+
+				</fx:Object>
+
+				<fx:Object label = "Flex" data = "Flex">
+
+				</fx:Object>
+
+				<fx:Object label = "Dreamweaver" data = "Dreamweaver">
+
+				</fx:Object>
+
+				<fx:Object label = "Coldfusion" data = "Coldfusion">
+
+				</fx:Object>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:ButtonBar>
+
+	<s:VScrollBar id = "sVScrollBar"
+				  preinitialize = "component_preinitializeHandler(event)"
+				  initialize = "component_initializeHandler(event)"
+				  creationComplete = "component_creationCompleteHandler(event)"
+				  >
+
+	</s:VScrollBar>
+
+	<s:VSlider id = "sVSlider" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</s:VSlider>
+
+	<s:Group id = "sGroup"
+			 preinitialize = "component_preinitializeHandler(event)"
+			 initialize = "component_initializeHandler(event)"
+			 creationComplete = "component_creationCompleteHandler(event)"
+			 width = "10%"
+			 height = "10%">
+
+	</s:Group>
+
+	<s:Panel id = "sControlBar" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<s:controlBarContent>
+			<fx:Array>
+				<s:Button label = "Flash">
+
+				</s:Button>
+
+				<s:Button label = "Flex">
+
+				</s:Button>
+
+				<s:Button label = "Coldfusion">
+
+				</s:Button>
+
+				<s:Button label = "Dreamweaver">
+
+				</s:Button>
+			</fx:Array>
+		</s:controlBarContent>
+	</s:Panel>
+
+	<s:HGroup id = "sHGroup" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</s:HGroup>
+	<s:VGroup id = "sVGroup" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		
+	</s:VGroup>
+
+	<s:Panel id = "sPanel" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+
+	</s:Panel>
+
+	<s:Group id = "sTile" preinitialize = "component_preinitializeHandler(event)" initialize = "component_initializeHandler(event)" creationComplete = "component_creationCompleteHandler(event)">
+		<s:layout>
+			<s:TileLayout requestedColumnCount = "1" requestedRowCount = "1">
+
+			</s:TileLayout>
+
+
+		</s:layout>
+	</s:Group>
+
+	
+</s:Application>

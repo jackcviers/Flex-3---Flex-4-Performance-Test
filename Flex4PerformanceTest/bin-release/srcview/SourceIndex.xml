@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>Source of Flex4PerformanceTest</title>
+	<nodes>
+		<node label="src">
+			<node icon="packageIcon" label="skins" expanded="true">
+				<node icon="mxmlIcon" label="ScrollableApplicationSkin.mxml" url="source/skins/ScrollableApplicationSkin.mxml.html"/>
+			</node>
+			<node icon="mxmlAppIcon" selected="true" label="Flex4DynamicPerformanceTest.mxml" url="source/Flex4DynamicPerformanceTest.mxml.html"/>
+		</node>
+	</nodes>
+	<zipfile label="Download source (ZIP, 5K)" url="Flex4PerformanceTest.zip">
+	</zipfile>
+	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex4_sdk_download">
+	</sdklink>
+</index>
