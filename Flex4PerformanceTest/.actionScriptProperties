@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<actionScriptProperties analytics="false" mainApplicationPath="Flex4DynamicPerformanceTest.mxml" projectUUID="b5271c94-8fe1-4c21-9bdf-9ae08916469f" version="6">
+  <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+    <compilerSourcePath/>
+    <libraryPath defaultLinkType="0">
+      <libraryPathEntry kind="4" path="">
+        <excludedEntries>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/flex.swc" useDefaultLinkType="false"/>
+        </excludedEntries>
+      </libraryPathEntry>
+      <libraryPathEntry kind="1" linkType="1" path="libs"/>
+    </libraryPath>
+    <sourceAttachmentPath/>
+  </compiler>
+  <applications>
+    <application path="Flex4DynamicPerformanceTest.mxml"/>
+    <application path="StaticFlex4PerformanceTest50.mxml"/>
+    <application path="StaticFlex4PerformanceTest300.mxml"/>
+    <application path="StaticFlex4PerformanceTest200.mxml"/>
+    <application path="StaticFlex4PerformanceTest150.mxml"/>
+    <application path="StaticFlex4PerformanceTest100.mxml"/>
+    <application path="StaticFlex4PerformanceTest600.mxml"/>
+    <application path="StaticFlex4PerformanceTest250.mxml"/>
+    <application path="Flex4PerformanceTest.mxml"/>
+    <application path="StaticFlex4PerformanceTest1000.mxml"/>
+  </applications>
+  <modules/>
+  <buildCSSFiles/>
+  <publishSource>
+    <sourcePathIncludes/>
+    <sourceExcludes>
+      <exclude path="html-template"/>
+      <exclude path="libs"/>
+      <exclude path="src/skins/LinkBarButtonFirstButtonSkin.mxml"/>
+      <exclude path="src/skins/LinkBarSkin.mxml"/>
+      <exclude path="src/skins/LinkButtonSkin.mxml"/>
+      <exclude path="src/Flex4PerformanceTest.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest100.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest1000.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest10000.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest150.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest200.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest20000.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest250.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest300.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest50.mxml"/>
+      <exclude path="src/StaticFlex4PerformanceTest600.mxml"/>
+    </sourceExcludes>
+  </publishSource>
+</actionScriptProperties>

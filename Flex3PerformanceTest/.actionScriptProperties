@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<actionScriptProperties analytics="false" mainApplicationPath="Flex3PerformanceTest.mxml" projectUUID="c1b165fe-c568-4469-8528-6c43ca6974b5" version="6">
+  <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="false" copyDependentFiles="true" flexSDK="Flex 3.5" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+    <compilerSourcePath/>
+    <libraryPath defaultLinkType="0">
+      <libraryPathEntry kind="4" path="">
+        <excludedEntries>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/flex.swc" useDefaultLinkType="false"/>
+        </excludedEntries>
+      </libraryPathEntry>
+      <libraryPathEntry kind="1" linkType="1" path="libs"/>
+    </libraryPath>
+    <sourceAttachmentPath/>
+  </compiler>
+  <applications>
+    <application path="StaticFlex3PerformanceTest300.mxml"/>
+    <application path="StaticFlex3PerformanceTest50.mxml"/>
+    <application path="StaticFlex3PerformanceTest600.mxml"/>
+    <application path="StaticFlex3PerformanceTest1000.mxml"/>
+    <application path="StaticFlex3PerformanceTest150.mxml"/>
+    <application path="StaticFlex3PerformanceTest250.mxml"/>
+    <application path="Flex3PerformanceTest.mxml"/>
+    <application path="StaticFlex3PerformanceTest200.mxml"/>
+    <application path="StaticFlex3PerformanceTest100.mxml"/>
+    <application path="StaticFlex3PerformanceTest10000.mxml"/>
+    <application path="StaticFlex3PerformanceTest20000.mxml"/>
+    <application path="Flex3DynamicPerformanceTest.mxml"/>
+  </applications>
+  <modules/>
+  <buildCSSFiles/>
+  <publishSource>
+    <sourcePathIncludes/>
+    <sourceExcludes>
+      <exclude path="html-template"/>
+      <exclude path="libs"/>
+      <exclude path="src/Flex3DynamicPerformanceTest.mxml"/>
+      <exclude path="src/Flex3PerformanceTest.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest100.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest10000.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest150.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest200.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest20000.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest250.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest300.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest50.mxml"/>
+      <exclude path="src/StaticFlex3PerformanceTest600.mxml"/>
+    </sourceExcludes>
+  </publishSource>
+</actionScriptProperties>
